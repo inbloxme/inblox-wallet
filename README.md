@@ -1,24 +1,46 @@
-# Generate Wallet
+# Inblox Wallet Generation Package
 
-Download this library using,
+This package is used to generate a new Ethereum wallet or import a wallet using a nmemonic phrase.
+
+> **Disclaimer - This is WIP, and release in alpha.**
+
+## Installation and Usage
+
+> Installation
+
+Install the package by running the command,
 
 ```npm install @inbloxme/inblox-wallet```
 
-Import this library into your project using,
+Import the package into your project using,
 
-```const InbloxWallet = require('@inbloxme/inblox-wallet')```
+```const inbloxWallet = require('@inbloxme/inblox-wallet');```
 
-Initialise the constructor
+> Generate a new Ethereum wallet using
 
-```const wallet = new InbloxWallet()```
+```const inbloxWallet = wallet.createWallet();```
 
-Generate your wallet using,
+#### Output
 
-```const newWallet = wallet.createWallet()```
+```publicAddress``` - Public address of that wallet.
+```privateKey``` - Private key of that public address.
+```mnemonic``` - 12 word mnemonic or seed phrase.
+```wallet``` - An object with other wallet related information.
 
-If you already have a mnemonic and wants to import the wallet using mnemonic, then use,
+> Import an existing Ethereum wallet by passing in the mnemonic using, 
 
-```
-const mnemonic = 'your, twelve, word, seed, phrase, to, import, your, Ethereum, wallet, credentials, from';
-const newWallet = wallet.importFromMnemonic(mnemonic)
-```
+```const inbloxWallet = wallet.importFromMnemonic(menmonic);```
+
+#### Output
+
+```publicAddress``` - Public address of that wallet.
+```privateKey``` - Private key of that public address.
+```wallet``` - An object with other wallet related information.
+
+## WIP
+
+Want to contribute, we would :heart: that!
+
+We are a Global :earth_asia::earth_africa::earth_americas: team! :muscle:
+
+Write to dev@inblox.me, or follow us on twitter, [https://twitter.com/inblox_me](https://twitter.com/inblox_me)

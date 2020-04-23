@@ -1,21 +1,19 @@
 const { Wallet } = require('ethers');
 
-class InbloxWallet {
+async function createWallet() {
+  const wallet = Wallet.createRandom();
+  const { privateKey, address, mnemonic } = wallet;
 
-    async createWallet() {
-        const wallet = Wallet.createRandom();
-        const privateKey = wallet.privateKey;
-        const publicAddress = wallet.address;
-        console.log(wallet)
-        return { wallet, publicAddress, privateKey };
-    }
-
-    async importFromMnemonic(mnemonic) {
-        const wallet = Wallet.fromMnemonic(mnemonic);
-        const privateKey = wallet.privateKey;
-        const publicAddress = wallet.address;
-        return { wallet, publicAddress, privateKey };
-    }
-
+  return {
+    wallet, publicAddress: address, privateKey, mnemonic,
+  };
 }
- module.exports = InbloxWallet;
+
+async function importFromMnemonic(mnemonic) {
+  const wallet = Wallet.fromMnemonic(mnemonic);
+  const { privateKey, address } = wallet;
+
+  return { wallet, publicAddress: address, privateKey };
+}
+
+module.exports = { createWallet, importFromMnemonic };
